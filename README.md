@@ -2,4 +2,4 @@
 
 Scan the QR code below to view the property
 
-![1053 San Pablo Ave, Albany, CA](qr.png)
+![1053 San Pablo Ave, Albany, CA](qr.jpg)
