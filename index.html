@@ -1,11 +1,9 @@
-<!-- File: index.html -->
+<!-- /index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="format-detection" content="telephone=no" />
     <title>1053 San Pablo Ave, Albany, CA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -14,29 +12,22 @@
   </head>
 
   <body class="min-h-screen bg-gradient-to-br from-white via-neutral-100 to-neutral-200 text-neutral-900 antialiased">
-    <!-- Header (centered) -->
+    <!-- Header -->
     <header class="sticky top-0 z-30 bg-gradient-to-b from-white/60 to-white/20 backdrop-blur">
       <div class="mx-auto max-w-7xl px-4 py-5">
-        <h1 class="text-center text-3xl md:text-5xl font-extrabold tracking-tight">
-          FOR LEASE: 1053 San Pablo Ave, Albany, CA
-        </h1>
+        <h1 class="text-center text-3xl md:text-5xl font-extrabold">FOR LEASE: 1053 San Pablo Ave, Albany, CA</h1>
       </div>
     </header>
 
-    <!-- Main -->
-    <!-- padding-bottom on mobile so sticky bar doesn't cover content -->
     <main class="mx-auto max-w-7xl px-4 pt-6 pb-24 md:pb-6">
-      <!-- Two equal columns that stretch to fit content; min height ~ viewport -->
-      <section class="grid gap-6 md:grid-cols-2 items-stretch min-h-[75vh] md:min-h-[80vh]">
-        <!-- RIGHT (desktop) / TOP (mobile): Photo gallery -->
-        <div
-          class="order-1 md:order-2 relative h-full w-full min-h-[60vh] md:min-h-0 max-h-[85vh] md:max-h-none rounded-3xl bg-white/70 border border-black/5 backdrop-blur-xl shadow-xl"
-        >
+      <!-- Desktop: independent heights; mobile: stacked -->
+      <section class="flex flex-col gap-6 md:flex-row md:items-start">
+        <!-- ====== GALLERY (original sizing retained) ====== -->
+        <div class="order-1 md:order-2 md:w-1/2 relative rounded-3xl bg-white/70 border border-black/5 backdrop-blur-xl shadow-xl min-h-[60vh]">
           <div class="absolute inset-3 rounded-2xl overflow-hidden bg-white border border-black/10 flex flex-col">
             <!-- Track fills all available height -->
             <div id="carousel"
                  class="hide-scrollbar relative flex-1 flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden">
-              <!-- 6 slides: 1.jpg..5.jpg, 6.png -->
               <figure class="snap-start w-full shrink-0 h-full flex items-center justify-center bg-white">
                 <img src="./1.jpg" alt="Exterior" loading="eager" draggable="false" class="max-h-full max-w-full object-contain select-none" />
               </figure>
@@ -82,82 +73,106 @@
           </div>
         </div>
 
-        <!-- LEFT (desktop) / BELOW GALLERY (mobile): Info + Map -->
-        <div class="order-2 md:order-1 h-full w-full p-4 rounded-3xl bg-white/70 border border-black/5 backdrop-blur-xl shadow-xl">
-          <div class="grid h-full grid-rows-[auto,1fr] gap-4">
-            <!-- Info (auto) -->
-            <div class="rounded-2xl bg-white/70 border border-black/5 p-5 backdrop-blur-md shadow-inner">
-              <div class="space-y-3 text-sm/6">
-                <h2 class="text-xl font-semibold">NATHAN GOOD</h2>
+        <!-- ====== INFO + MAP (expands only this column) ====== -->
+        <div class="order-2 md:order-1 md:w-1/2 rounded-3xl bg-white/70 border border-black/5 backdrop-blur-xl shadow-xl p-3">
+          <div class="rounded-2xl bg-white border border-black/10">
+            <div class="grid gap-4 p-5">
+              <!-- Info -->
+              <div class="rounded-2xl bg-white/70 border border-black/5 p-5 backdrop-blur-md shadow-inner">
+                <div class="space-y-3 text-sm/6">
+                  <h2 class="text-xl font-semibold">Property Information</h2>
 
-                <div>
-                  <span class="font-medium">Phone Number:</span>
-                  <span aria-label="Phone number">510&#8209;256&#8209;9592</span>
+                  <div><span class="font-medium">Phone Number:</span> 510&#8209;256&#8209;9592</div>
+                  <div><span class="font-medium">Email:</span> <a class="underline decoration-neutral-400 hover:decoration-neutral-800" href="mailto:hello@1053sanpablo.com">hello@1053sanpablo.com</a></div>
+                  <div><span class="font-medium">Address:</span> 1053 San Pablo Ave, Albany, CA 94706</div>
+                  <div class="text-xs">
+                    <a class="underline decoration-neutral-300 hover:decoration-neutral-800" target="_blank" rel="noopener"
+                       href="https://www.google.com/maps/search/?api=1&query=37.88479,-122.29692">Open in Google Maps</a>
+                  </div>
+
+                  <div class="pt-1"><span class="font-medium">Current Status:</span> Currently Vacant</div>
+                  <div><span class="font-medium">Land Use:</span> Commercial</div>
+                  <div><span class="font-medium">Building Size:</span> 1,017 Square Feet</div>
+                  <div><span class="font-medium">Year Built:</span> 1925</div>
+                  <div><span class="font-medium">Terms &amp; Cost:</span> $3.5 sq foot NNN ~3500/mo</div>
+
+                  <!-- Collapsible long description (no inner scrolling) -->
+                  <div class="mt-3">
+                    <div id="descPanel" class="relative overflow-hidden transition-[max-height] duration-300 max-h-32">
+                      <div class="space-y-3 text-sm/6">
+                        <p>
+                          1053 San Pablo Avenue is a 1,017 SF street-front commercial suite in Albany, California,
+                          offering strong visibility and convenient access along the San Pablo Avenue corridor. The
+                          space features a versatile open layout with rear offices and storage, providing flexibility
+                          for a wide range of uses—from retail and service concepts to karate/martial arts studios,
+                          tutoring, and after-school programs (subject to City approvals and any required licensing).
+                        </p>
+                        <p>
+                          The property benefits from immediate proximity to UC Berkeley’s University Village (UVA)—a large,
+                          established family housing community in Albany—supporting consistent local demand from nearby
+                          residents. With its family-oriented surroundings, the space presents strong potential for
+                          children’s and youth-focused concepts such as enrichment, arts instruction, or an after-school
+                          program (subject to City of Albany use approvals and any required licensing).
+                        </p>
+                        <p>
+                          Transit access is a key draw: AC Transit Line 72 and Line 72L (limited-stop) run along San Pablo
+                          Avenue, connecting the corridor to El Cerrito del Norte BART and onward to Downtown Oakland/Jack
+                          London Square, supporting commuter and student access without reliance on parking.
+                        </p>
+                      </div>
+                      <div id="descFade" class="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white"></div>
+                    </div>
+
+                    <div class="mt-2">
+                      <button id="toggleDesc"
+                              type="button"
+                              class="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm font-medium shadow hover:bg-neutral-50 focus:outline-none focus:ring focus:ring-black/10"
+                              aria-expanded="false"
+                              aria-controls="descPanel">
+                        <span id="toggleLabel">Expand Details</span>
+                        <svg id="toggleIcon" class="h-4 w-4 transition-transform duration-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-                <div>
-                  <span class="font-medium">Email:</span>
-                  <a class="underline decoration-neutral-400 hover:decoration-neutral-800" href="mailto:hello@1053sanpablo.com">hello@1053sanpablo.com</a>
-                </div>
-
-                <div>
-                  <span class="font-medium">Address:</span>
-                  <span>1053 San Pablo Ave, Albany, CA 94706</span>
-                </div>
-
-                <div class="text-xs">
-                  <a class="underline decoration-neutral-300 hover:decoration-neutral-800" target="_blank" rel="noopener"
-                     href="https://www.google.com/maps/search/?api=1&query=37.88479,-122.29692">Open in Google Maps</a>
-                </div>
-
-                <div class="pt-1"><span class="font-medium">Current Status:</span> Currently Vacant</div>
-                <div><span class="font-medium">Land Use:</span> Commercial</div>
-                <div><span class="font-medium">Building Size:</span> 1140 Square Feet</div>
-                <div><span class="font-medium">Year Built:</span> 1925</div>
               </div>
-            </div>
 
-            <!-- Map (fills remaining height) -->
-            <div class="relative overflow-hidden rounded-2xl bg-white/70 border border-black/5 backdrop-blur-md">
-              <div class="absolute left-3 top-3 z-10 rounded-full bg-white/80 px-3 py-1 text-xs shadow">Map</div>
-              <iframe
-                title="Map centered at 37.88479, -122.29692"
-                class="h-full w-full"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=37.88479,-122.29692&z=19&output=embed">
-              </iframe>
+              <!-- Map -->
+              <div class="relative overflow-hidden rounded-2xl bg-white/70 border border-black/5 backdrop-blur-md">
+                <div class="absolute left-3 top-3 z-10 rounded-full bg-white/80 px-3 py-1 text-xs shadow">Map</div>
+                <iframe
+                  title="Map centered at 37.88479, -122.29692"
+                  class="h-[360px] w-full md:h-[420px]"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=37.88479,-122.29692&z=19&output=embed">
+                </iframe>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Sticky Call/Email bar (mobile only) -->
+    <!-- Sticky Call/Email (mobile) -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-black/10 bg-white/90 backdrop-blur">
       <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-3">
-        <a href="tel:15102569592" class="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-neutral-900 text-white hover:bg-neutral-800">
-          Call
-        </a>
-        <a href="mailto:hello@1053sanpablo.com" class="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-neutral-900 text-white hover:bg-neutral-800">
-          Email
-        </a>
-        <a href="https://www.google.com/maps/search/?api=1&query=37.88479,-122.29692" target="_blank" rel="noopener"
-           class="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-neutral-900 text-white hover:bg-neutral-800">
-          Maps
-        </a>
+        <a href="tel:15102569592" class="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-neutral-900 text-white hover:bg-neutral-800">Call</a>
+        <a href="mailto:hello@1053sanpablo.com" class="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-neutral-900 text-white hover:bg-neutral-800">Email</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=37.88479,-122.29692" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-neutral-900 text-white hover:bg-neutral-800">Maps</a>
       </div>
     </div>
 
     <script>
-      // Carousel: arrows + dots + keys
+      // Carousel
       (function () {
         const track = document.getElementById("carousel");
         const slides = Array.from(track.children);
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
         const dotsWrap = document.getElementById("dots");
-
         const slideW = () => track.getBoundingClientRect().width;
 
         const dots = slides.map((_, i) => {
@@ -172,23 +187,18 @@
 
         const indexFromScroll = () => Math.round(track.scrollLeft / slideW());
         const setActiveDot = (i) => dots.forEach((d, j) => d.classList.toggle("bg-neutral-900", j === i));
-
         const scrollToIndex = (i) => {
           const idx = Math.min(Math.max(i, 0), slides.length - 1);
           track.scrollTo({ left: idx * slideW(), behavior: "smooth" });
           setActiveDot(idx);
         };
 
-        const prev = () => scrollToIndex(indexFromScroll() - 1);
-        const next = () => scrollToIndex(indexFromScroll() + 1);
-
-        prevBtn.addEventListener("click", prev);
-        nextBtn.addEventListener("click", next);
-
+        prevBtn.addEventListener("click", () => scrollToIndex(indexFromScroll() - 1));
+        nextBtn.addEventListener("click", () => scrollToIndex(indexFromScroll() + 1));
         addEventListener("keydown", (e) => {
           if (e.defaultPrevented) return;
-          if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
-          if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+          if (e.key === "ArrowLeft") { e.preventDefault(); scrollToIndex(indexFromScroll() - 1); }
+          if (e.key === "ArrowRight") { e.preventDefault(); scrollToIndex(indexFromScroll() + 1); }
         });
 
         let raf = 0;
@@ -203,6 +213,29 @@
         });
 
         setActiveDot(0);
+      })();
+
+      // Expand/collapse only the text; gallery unaffected
+      (function () {
+        const btn = document.getElementById("toggleDesc");
+        const label = document.getElementById("toggleLabel");
+        const icon = document.getElementById("toggleIcon");
+        const panel = document.getElementById("descPanel");
+        const fade = document.getElementById("descFade");
+
+        let expanded = false;
+
+        function sync() {
+          btn.setAttribute("aria-expanded", String(expanded));
+          label.textContent = expanded ? "Collapse Details" : "Expand Details";
+          icon.style.transform = expanded ? "rotate(180deg)" : "rotate(0deg)";
+          panel.classList.toggle("max-h-32", !expanded);
+          panel.classList.toggle("max-h-none", expanded);
+          fade.classList.toggle("hidden", expanded);
+        }
+
+        btn.addEventListener("click", () => { expanded = !expanded; sync(); });
+        sync();
       })();
     </script>
   </body>
